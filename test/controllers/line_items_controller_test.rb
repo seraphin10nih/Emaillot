@@ -16,22 +16,16 @@ class LineItemsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create line_item" do
-    city = maillots(:one)
+   
 
     assert_difference('LineItem.count') do
-      post line_items_url, params: { maillot_id: city.id } 
+      post line_items_url, params: { line_item: { cart_id: @line_item.cart_id, item_id: @line_item.item_id, quantity: @line_item.quantity} } 
     end
 
-    assert_redirected_to root_url
-    follow_redirect!
-
-    assert_select 'li', /#{city.title} \(x 1\)/
-
-    post line_items_url, params: { maillot_id: city.id }
-    follow_redirect!
-
-    assert_select 'li', /#{city.title} \(x 2\)/
+    assert_redirected_to root_url(LineItem.last)
   end
+
+   
 
   test "should show line_item" do
     get line_item_url(@line_item)

@@ -1,4 +1,4 @@
-<h1> Toutes nos catalogues de produits</h1>
+<h1> Toutes nos catalogues </h1>
 
 <% cache @maillots do %>	
 	<% @maillots.each do |maillot| %>
@@ -16,7 +16,7 @@
 							</div>
 							<div class="card-footer text-center font-weight-bold">
 						<%= number_to_currency maillot.price, unit: "€", separator: ",", format: "%n %u" %>
-						<%= button_to "Dans le panier", line_items_path(maillot_id: maillot), class: "btn btn-primary", remote: true %>
+						<%= button_to "Dans le panier", line_items_path(maillot_id: maillot), class: "btn btn-success", remote: true %>
 							</div>
 						</div>
 
