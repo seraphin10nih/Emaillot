@@ -1,0 +1,29 @@
+<h1> Toutes nos catalogues de produits</h1>
+
+<% cache @maillots do %>	
+	<% @maillots.each do |maillot| %>
+		<% cache maillot do %>
+			<div class="row mb-4">
+				<div class="row w-100 bg-light">
+					<div class="card-body">
+						<h2 class="card-title"><%= maillot.title %></h2>
+						<div class="row">
+							<div class="col-6">
+								<%= image_tag(maillot.image_url, width: "160") %>
+							</div>
+							<div class="col-6">
+								<div class="card-text"><%= sanitize(maillot.description)%></div>
+							</div>
+							<div class="card-footer text-center font-weight-bold">
+						<%= number_to_currency maillot.price, unit: "€", separator: ",", format: "%n %u" %>
+						<%= button_to "Dans le panier", line_items_path(maillot_id: maillot), class: "btn btn-primary", remote: true %>
+							</div>
+						</div>
+
+					</div>
+					
+				</div>
+			</div>
+		<% end %>
+	<% end %>
+<% end %>
