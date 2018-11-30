@@ -1,0 +1,2 @@
+module MaillotsHelper
+end

@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Maillots</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Price</th>
+      <th>Image url</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @maillots.each do |maillot| %>
+      <tr>
+        <td><%= maillot.title %></td>
+        <td><%= truncate strip_tags(maillot.description), length: 80 %></td>
+        <td><%= number_to_currency maillot.price, unit: "€", separator: ",", format: "%n%u" %></td>
+        <td><%= image_tag maillot.image_url, width: 60 %></td>
+        <td><%= link_to 'Show', maillot, class: "btn btn-primary" %></td>
+        <td><%= link_to 'Edit', edit_maillot_path(maillot), class: "btn btn-secondary" %></td>
+        <td><%= link_to 'Destroy', maillot, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Maillot', new_maillot_path %>

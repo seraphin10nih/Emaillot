@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @maillot.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= raw @maillot.description %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @maillot.price %>
+</p>
+
+<p>
+  <strong>Image url:</strong>
+  <%= @maillot.image_url %>
+</p>
+
+<%= link_to 'Edit', edit_maillot_path(@maillot) %> |
+<%= link_to 'Back', maillots_path %>
